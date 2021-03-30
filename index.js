@@ -1,4 +1,5 @@
-/*REMEMBER TO RETURN ALL OF THE ANSWERS ON THESE TASKS, IF YOU DON'T, THE AUTOGRADER WILL NOT WORK*/
+/*REMEMBER TO RETURN ALL OF THE ANSWERS ON THESE TASKS, IF YOU DON'T, 
+THE AUTOGRADER WILL NOT WORK*/
 
 /* 👀 This is your data ⬇ */
 const originalFlavors = [
@@ -45,11 +46,12 @@ Use the copy function below to do the following:
     2. Return a copy of the received array  
 */
 
-function copy(/*your code here*/){
-    /*your code here*/
+function copy(arr){
+    let arr_copy =  [...arr];
+    return arr_copy
 }    
 
-
+console.log(copy(originalFlavors))
 
 
 
@@ -63,10 +65,10 @@ Confirm that an array is exactly 31 flavors. Your function should accept:
 For Example: is31Flavors(originalFlavors) will return true if your code is working properly
 */
 
-
-function is31Flavors(/*your code here*/){
-   /*your code here*/
+function is31Flavors(arr){
+   return (arr.length === 31);
 }
+console.log(is31Flavors(originalFlavors))
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Corporate has come to you with an idea for a new flavor: Rainbow Sherbert! They think this will be a game changer. You need to modify the array to include this flavor. 
@@ -81,9 +83,14 @@ Use the addFlavor function below to do the following:
 */
 
 
-function addFlavor(/*your code here*/){
-   /*your code here*/
+function addFlavor(arr,new_flavor){
+    arr.unshift(new_flavor);
+    return console.log(arr); 
+    // console.log(arr.unshift(new_flavor));
+    // return console.log(arr);   
 }
+
+console.log(addFlavor(originalFlavors,"Mango"));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -97,11 +104,11 @@ Use the removeLastFlavor function below to do the following:
     For example: running removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla"]
 */
 
-function removeLastFlavor(/*your code here*/){
-   /*your code here*/
+function removeLastFlavor(arr){
+    arr.pop();
+    return arr;     
 }
-
-
+console.log(removeLastFlavor(originalFlavors));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Write a function that returns a flavor at a given index in the array.
@@ -114,14 +121,18 @@ Use the getFlavorByIndex function below to do the following:
     For example: running getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", assuming Rainbow Sherbert has been added successfully
 */
 
-function getFlavorByIndex(/*your code here*/){
-    /*your code here*/
+function getFlavorByIndex(arr,index_num){
+    return arr[index_num]
 }
 
+console.log(getFlavorByIndex(originalFlavors,2))
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
-As corporate wants to add more and more flavors to their lineup, they've realized that they need to remove flavors based on flavor name, 
-as opposed to just arbitrarily removing the first or last flavor. Your task is to get an index by flavor name, and remove that single flavor from the array.  
+As corporate wants to add more and more flavors to their lineup, 
+they've realized that they need to remove flavors based on flavor name, 
+as opposed to just arbitrarily removing the first or last flavor. 
+Your task is to get an index by flavor name, and remove that single flavor 
+from the array.  
 
 Use the removeFlavorByName function below to do the following:
     1. Receive an array
@@ -134,17 +145,20 @@ Use the removeFlavorByName function below to do the following:
     HINT: You can use .splice() for this
 */
 
-function removeFlavorByName(/*your code here*/){
-    /*your code here*/
+function removeFlavorByName(arr,name){
+    const position = arr.indexOf(name)-1
+    return arr.splice(position,1);
 }
-
+console.log(removeFlavorByName(originalFlavors, "Rocky Road"));
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
-July 7th is "World Chocolate Day" and Baskin Robins wants to create promotional materials highlighting all of their chocolate flavors. 
-Your task is to write a function that checks every item in the array for a string and returns a new array called filteredArray with only the values 
-that contain the received string. This would allow you to be able to filter for "Vanilla", "Sherbet", "Lemon" etc. when different holidays roll around 
-by passing in those specific strings.
+July 7th is "World Chocolate Day" and Baskin Robins wants to create promotional materials highlighting all
+ of their chocolate flavors. 
+Your task is to write a function that checks every item in the array for a string and returns a new array called filteredArray
+ with only the values 
+that contain the received string. This would allow you to be able to filter for "Vanilla", "Sherbet", "Lemon" etc. when different 
+holidays roll around by passing in those specific strings.
 
 Use the filterByWord function below to do the following:
     1. Receive an array
@@ -153,17 +167,28 @@ Use the filterByWord function below to do the following:
     4. If they do, add them to a new array
     5. Return the new array that contains the filtered flavors
 
-    For example: filterByWord(originalFlavors, "Chocolate") should return ["Chocolate", "Chocolate Almond", "Chocolate Chip", "Chocolate Fudge", "Chocolate Mint", "Chocolate Ribbon"]
+    For example: filterByWord(originalFlavors, "Chocolate") should return ["Chocolate", "Chocolate Almond", 
+    "Chocolate Chip", "Chocolate Fudge", "Chocolate Mint", "Chocolate Ribbon"]
 
     HINT - you can use the .includes method to help you solve this
 
     DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem. 
 */
 
-function filterByWord(/*your code here*/){
-    /*your code here*/
+
+function filterByWord(array){
+    const arr_new = [];
+    for (var i = 0; i <= array.length -1 ; i++) {
+        var split_var = array[i].split(" ");
+        if (split_var.includes("Chocolate") === true) {
+            arr_new.push(array[i]);
+        }
+    }
+    return arr_new; 
 }
 
+
+console.log(filterByWord(originalFlavors));
 
 /* 💪💪💪💪💪🧁🍦🍨 STRETCH 🍨🍦🍫💪💪💪💪💪*/ 
 
@@ -177,27 +202,33 @@ Use the getAverageWordLength function below to do the following:
     For example: getAverageWordLength(originalFlavors) should return a number between 0 and 3.     
 */
 
-function getAverageWordLength(/*code here*/){
-    /*code here*/
+function getAverageWordLength(array){
+    const arr_new = [];
+    let tot = 0;
+    for (var i = 0; i <= array.length -1 ; i++) {
+        var split_var = array[i].split(" ");
+        arr_new.push(split_var.length);
+        tot = tot + split_var.length;
+    }
+    return tot/arr_new.length; 
 }
 
+console.log(getAverageWordLength(originalFlavors));
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪
-Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors 
-from originalFlavors, currentFlavors, seasonalFlavors, and regionalFlavors and store it in an array called randomFlavors.
+Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors.
+Write a function that will randomly select a total of 31 flavors 
+from originalFlavors, currentFlavors, seasonalFlavors, and regionalFlavors and 
+store it in an array called randomFlavors.
 
 Use the getRandomFlavors function and new arrays below to do the following:
     1. Receive the four arrays with all the differnet flavors (originalFlavors is above, the others are below)
     2. Randomly pick flavors from all four arrays
     3. Return a new array called randomFlavors that has a lenght of 31
 
-    For example: getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors) might return ["Strawberry Cheesecake", "Eggnog,"..."Chocolate"].
+    For example: getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors) 
+    might return ["Strawberry Cheesecake", "Eggnog,"..."Chocolate"].
 */
-
-
-function getRandomFlavors(/*code here*/){
-    /*code here*/
-}
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
 const newFlavors = [
@@ -279,6 +310,21 @@ const regionalFlavors = [
     "Chocolate Chocolate Chip Cheesecake",
     "Caramel 'n' Cookies"
 ]
+
+
+
+function getRandomFlavors(originalFlavors,newFlavors,seasonalFlavors,regionalFlavors){
+    var randomFlavors = [];
+    var concat_flavors = originalFlavors.concat(newFlavors,seasonalFlavors,regionalFlavors)
+    for (var i = 0; i <=31; i++){
+        var random_pack = [];
+        var r_Flavors  = concat_flavors[Math.floor(Math.random()*originalFlavors.length)]
+        randomFlavors.push(r_Flavors);
+    }
+    return randomFlavors;
+}
+
+console.log(getRandomFlavors(originalFlavors,newFlavors,seasonalFlavors,regionalFlavors));
 
 
 
